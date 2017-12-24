@@ -44,6 +44,12 @@ def split_matrix_fast(X, y):
     return best_col, split_value, impurity
 
 
+class DecisionTreesRegressor():
+    def __init__(self, max_depth):
+        self.max_depth = max_depth
+    def fit(self, X, y):
+        self.tree = np.zeros((2**max_depth-1, 6))
+
 if __name__ == '__main__':
     # X = np.array([[1, 2, 3, 4, 5], [3, 2, 5, 1, 7]]).T
     # y = np.array([0, 0, 1, 1, 1])
