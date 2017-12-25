@@ -44,6 +44,21 @@ def split_matrix_fast(X, y):
     return best_col, split_value, impurity
 
 
+class DecisionTrees():
+    def __init__(self):
+        self.depth = 10
+        self._nodes = np.zeros(2**self.depth, dtype=[('left_child', np.int64),
+                     ('right_child', np.int64), ('feature', np.int64),
+                     ('threshold', np.float64), ('impurity', np.float64),
+                     ('n_node_samples', np.int64)])
+        self.n_nodes = 0
+
+    def add_node(self, p_index, feature, threshold, impurity, n_nodes_sample):
+        if self.n_nodes >= len(self._nodes):
+            self.resize_nodes()
+        self._nodes[index] = (-1, -1, feature, threshold,
+                              impurity, n_nodes_sample)
+
 class DecisionTreesRegressor():
     def __init__(self, max_depth):
         self.max_depth = max_depth
